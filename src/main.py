@@ -33,6 +33,8 @@ model.compile(
     metrics=['accuracy']
 )
 
+
+model.save(os.environ.get("MODEL_PATH"))
 history = model.fit(data_tr, epochs=10, validation_data=data_vl)
 print(history.history)
 plt.plot(history.history['accuracy'], label='accuracy')
