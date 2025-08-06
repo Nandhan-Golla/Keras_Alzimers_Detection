@@ -24,7 +24,7 @@ model = keras.models.Sequential([
     keras.layers.Flatten(),
     keras.layers.Dense(128, activation='relu'),
     keras.layers.Dense(10, activation='relu'),
-    keras.layers.Dense(4, activation='sigmoid')
+    keras.layers.Dense(4, activation='softmax')
 ])
 
 model.compile(
