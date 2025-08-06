@@ -10,4 +10,4 @@ wheels/
 .venv
 
 # Ladder environments
-.env
+src/.env
