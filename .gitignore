@@ -9,5 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
-# Ladder environments
+# Environment files
+.env
+.env.*
 src/.env
+**/.env
