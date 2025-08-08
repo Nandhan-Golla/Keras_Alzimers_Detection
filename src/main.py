@@ -11,12 +11,16 @@ env.load_dotenv()
 data_tr = keras.utils.image_dataset_from_directory(os.environ.get("DATA_TRAIN_SET_PATH"))
 data_vl = keras.utils.image_dataset_from_directory(os.environ.get("DATA_VAL_SET_PATH"))
 
-data_tr = data_tr.map(lambda x, y: (tf.image.resize(x, (64, 64)), y))
-data_vl = data_vl.map(lambda x, y: (tf.image.resize(x, (64, 64)), y))
+data_tr = data_tr.map(lambda x, y: (tf.image.resize(x, (224, 224)), y))
+data_vl = data_vl.map(lambda x, y: (tf.image.resize(x, (224, 224)), y))
 
 model = keras.models.Sequential([
-    keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),
+    keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(224, 224, 3)),
     keras.layers.MaxPooling2D((2, 2)),
+    keras.layers.Dense(64, activation='relu', kernel_regularizer=keras.regularizers.l2(0.01)),
+    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dense(256, activation='relu', kernel_regularizer=keras.regularizers.l2(0.01)),
+    keras.layers.Dense(512, activation='relu'),
     keras.layers.Conv2D(64, (3, 3), activation='relu'),
     keras.layers.MaxPooling2D((2, 2)),
     keras.layers.Conv2D(128, (3, 3), activation='relu'),
