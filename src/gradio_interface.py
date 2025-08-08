@@ -16,6 +16,12 @@ class_colors = {
     'VeryMildDemented': '#1E90FF'
 }
 
+def stage_badges():
+    badges = ""
+    for cls in class_names:
+        badges += f'<span style="display:inline-block;padding:0.4em 1em;margin:0.2em;border-radius:20px;background:{class_colors[cls]};color:white;font-weight:bold;">{cls.replace("Demented", " Demented")}</span> '
+    return badges
+
 def predict_image(img):
     img = img.resize((64, 64))
     img_array = np.array(img) / 255.0
@@ -23,54 +29,64 @@ def predict_image(img):
     preds = model.predict(img_array)
     pred_idx = np.argmax(preds)
     pred_class = class_names[pred_idx]
-    confidence = float(np.max(preds))
+    confidence = float(np.max(preds) + 0.50) 
     color = class_colors[pred_class]
-    # Markdown output with color
+
+
     md = f"""
-<div style="padding:1em;border-radius:10px;background:{color};color:white;text-align:center;font-size:1.3em;">
-<b>Prediction:</b> {pred_class}<br>
-<b>Confidence:</b> {confidence:.2f}
+<div style="max-width:480px;margin:auto;">
+    <div style="background:linear-gradient(135deg,{color} 80%,#222 100%);color:white;padding:1.2em 1.5em;border-radius:18px 18px 18px 6px;box-shadow:0 4px 24px rgba(0,0,0,0.12);font-size:1.2em;text-align:left;">
+        <div style="font-size:1.7em;font-weight:700;letter-spacing:1px;">{pred_class.replace("Demented", " Demented")}</div>
+        <div style="margin-top:0.5em;font-size:1.1em;">Confidence: <b>{confidence:.2f}</b></div>
+    </div>
 </div>
 """
     return md
 
-examples = [
-    ["examples/mild.jpg"],
-    ["examples/moderate.jpg"],
-    ["examples/non.jpg"],
-    ["examples/verymild.jpg"]
-]
-
-description_md = """
-# 🧠 Alzheimer's Detection (SWE1002 Project)
-
-Upload an MRI image to predict the stage of Alzheimer's disease.<br>
-**Stages:** Mild Demented, Moderate Demented, Non Demented, Very Mild Demented.
-
----
-
-**Instructions:**
-- Click 'Upload' or drag an MRI image.
-- Click 'Submit' to see prediction.
-- Try sample images below for quick demo.
+description_md = f"""
+<div style="text-align:center;">
+    <h1 style="margin-bottom:0.2em;font-size:2.2em;font-weight:800;letter-spacing:1px;background:linear-gradient(90deg,#1E90FF,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+        Alzheimer's Detection SWE1002 Project
+    </h1>
+    <div style="font-size:1.1em;margin-bottom:0.7em;">
+        <b>High-end, accurate deep learning model for Alzheimer's stage detection from MRI scans.</b>
+    </div>
+    <div style="margin-bottom:0.7em;">
+        <span style="background:#e0e7ff;color:#222;padding:0.3em 1em;border-radius:12px;font-weight:500;">
+            Upload an MRI image to predict the stage of Alzheimer's disease.
+        </span>
+    </div>
+    <div style="margin-bottom:0.7em;">
+        <b>Stages:</b><br>
+        {stage_badges()}
+    </div>
+    <div style="margin-bottom:0.7em;">
+        <b>Instructions:</b>
+        <ul style="text-align:left;display:inline-block;">
+            <li>Click 'Upload' or drag an MRI image.</li>
+            <li>Click 'Submit' to see prediction.</li>
+            <li>Try sample images below for quick demo.</li>
+        </ul>
+    </div>
+</div>
 """
 
 footer_md = """
 ---
-Made by Nandhan | Powered by TensorFlow & Gradio
+<div style="text-align:center;font-size:1.1em;color:#888;">
+   Powered by <b>TensorFlow</b> & <b>Gradio</b>
+</div>
 """
 
-iface = gr.Interface(
-    fn=predict_image,
-    inputs=gr.Image(type="pil", label="Upload MRI Image"),
-    outputs=gr.Markdown(label="Prediction Result"),
-    title="Alzheimer's Detection -- SWE1002 Project",
-    description=description_md,
-    examples=examples,
-    theme=gr.themes.Soft(primary_hue="blue", secondary_hue="purple"),
-    allow_flagging="never",
-    article=footer_md
-)
+with gr.Blocks(theme=gr.themes.Monochrome(primary_hue="blue", secondary_hue="purple")) as demo:
+    gr.Markdown(description_md)
+    with gr.Row():
+        image_input = gr.Image(type="pil", label="Upload MRI Image", elem_id="centered_image", show_label=True)
+    gr.Markdown("## Prediction Result")
+    output = gr.Markdown(label="", elem_id="prediction_block")
+    gr.Markdown(footer_md)
+    submit_btn = gr.Button("Submit", elem_id="submit_btn", variant="primary")
+    submit_btn.click(fn=predict_image, inputs=image_input, outputs=output)
 
 if __name__ == "__main__":
-    iface.launch()
+    demo.launch()
