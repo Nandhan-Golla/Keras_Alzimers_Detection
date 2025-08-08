@@ -5,10 +5,10 @@ import dotenv as env
 
 
 env.load_dotenv()
-data_tarin = ke.utils.image_dataset_from_directory(os.environ('DATA_TRAIN_SET_PATH'))
-data_val = ke.utils.image_dataset_from_directory(os.environ('DATA_VAL_SET_PATH'))
+data_tarin = ke.utils.image_dataset_from_directory(os.environ.get('DATA_TRAIN_SET_PATH'))
+data_val = ke.utils.image_dataset_from_directory(os.environ.get('DATA_VAL_SET_PATH'))
 
-model_save_path = os.environ('MODEL_PATH')
+model_save_path = os.environ.get('MODEL_PATH')
 data_tarin = data_tarin.map(lambda x, y: (tf.image.resize(x, (224, 224)), y))
 data_val = data_val.map(lambda x, y: (tf.image.resize(x, (224, 224)), y))
 
