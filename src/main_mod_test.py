@@ -27,13 +27,14 @@ validation_data = ke.utils.image_dataset_from_directory(os.environ.get("DATA_VAL
 
 class IterativeTransformer(BaseEstimator, TransformerMixin):
   
-  def __init__(self, n_components= 2, kernel= 'rbf', gamma=None, max_samples=1000):
+  def __init__(self, n_components= 2, kernel= 'rbf', gamma=None, batch_size=1000):
     self.n_components = n_components
     self.kernel = kernel
     self.gamma = gamma
-    self.max_samples = max_samples
+    self.batch_size = batch_size
     self.scaler = StandardScaler()
     self.kcpa = KernelPCA(n_components=self.n_components, kernel=self.kernel, gamma=self.gamma)
+    self.is_fitted = False
 
 
   def _to_numpy_sample_(self, X, max_samples=None):
