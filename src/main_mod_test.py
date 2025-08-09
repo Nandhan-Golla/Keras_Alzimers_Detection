@@ -27,25 +27,57 @@ validation_data = ke.utils.image_dataset_from_directory(os.environ.get("DATA_VAL
 
 class IterativeTransformer(BaseEstimator, TransformerMixin):
   
-  def __init__(self, n_components= 2, kernel= 'rbf', gamma=None):
+  def __init__(self, n_components= 2, kernel= 'rbf', gamma=None, max_samples=1000):
     self.n_components = n_components
     self.kernel = kernel
     self.gamma = gamma
+    self.max_samples = max_samples
     self.scaler = StandardScaler()
     self.kcpa = KernelPCA(n_components=self.n_components, kernel=self.kernel, gamma=self.gamma)
 
 
-  def _to_numpy_(self, X):
-    if isinstance(X, tf.data.Dataset):
+  def _to_numpy_sample_(self, X, max_samples=None):
+
+    if max_samples is None:
+      max_samples = self.max_samples
       
+    if isinstance(X, tf.data.Dataset):
       images = []
+      samples_collected = 0
+      print(f"Extracting up to {max_samples} samples from dataset...")
+      
       for batch_images, batch_labels in X:
-        images.append(batch_images.numpy())
-      X = np.concatenate(images, axis=0)
+        batch_array = batch_images.numpy()
+        remaining_samples = max_samples - samples_collected
+        if remaining_samples <= 0:
+          break
+        
+        if batch_array.shape[0] > remaining_samples:
+          batch_array = batch_array[:remaining_samples]
+        
+        images.append(batch_array)
+        samples_collected += batch_array.shape[0]
+        
+        if samples_collected >= max_samples:
+          break
+      
+      if images:
+        X = np.concatenate(images, axis=0)
+        print(f"Successfully extracted {X.shape[0]} samples")
+      else:
+        raise ValueError("No images found in dataset")
     elif isinstance(X, tf.Tensor):
       X = X.numpy()
+      if len(X) > max_samples:
+        X = X[:max_samples]
     elif isinstance(X, list):
       X = np.array(X)
+      if len(X) > max_samples:
+        X = X[:max_samples]
+    elif isinstance(X, np.ndarray):
+      if len(X) > max_samples:
+        X = X[:max_samples]
+    
     return X
   
   def _flatten_images_(self, X):
@@ -53,34 +85,37 @@ class IterativeTransformer(BaseEstimator, TransformerMixin):
     return X.reshape(n_samples, -1)
   
   def fit(self, X, y =None):
-    X = self._to_numpy_(X)
+    print(f"Fitting IterativeTransformer with max {self.max_samples} samples...")
+    X = self._to_numpy_sample_(X)
+    print(f"Loaded {X.shape[0]} samples with shape {X.shape}")
     X = X/255.0
     X_flat = self._flatten_images_(X)
+    print(f"Flattened shape: {X_flat.shape}")
+    print("Fitting StandardScaler...")
     X_scaled = self.scaler.fit_transform(X_flat)
+    print("Fitting KernelPCA...")
     x_pca = self.kcpa.fit(X_scaled)
+    print("Fitting complete!")
 
     return self
   
   def transform(self, X):
-    X = self._to_numpy_(X)
+    print("Transforming data...")
+    X = self._to_numpy_sample_(X)
+    print(f"Loaded {X.shape[0]} samples for transformation")
     X = X/255.0
     X_flat = self._flatten_images_(X)
     X_scaled = self.scaler.transform(X_flat)
     x_kcpa = self.kcpa.transform(X_scaled)
+    print(f"Transformation complete! Output shape: {x_kcpa.shape}")
     return x_kcpa
   
 try:
-  Dta = IterativeTransformer()
+
+  Dta = IterativeTransformer(max_samples=1000)
   Dta.fit(train_data)
-  Dta.transform(train_data)
-except Exception as e :
-     print(f"Nahh {e}")
-  
-
-
-  
-
-
-
-
-
+  result = Dta.transform(train_data)
+  print(f"Final result shape: {result.shape}")
+  print("Success! The error has been fixed.")
+except Exception as e:
+     print(f"Error occurred: {e}")
