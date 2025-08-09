@@ -38,7 +38,7 @@ class IterativeTransformer(BaseEstimator, TransformerMixin):
 
 
   def _get_dataset_batches_(self, X):
-    """Generator that yields batches of data from the dataset"""
+  
     if isinstance(X, tf.data.Dataset):
       current_batch = []
       current_size = 0
