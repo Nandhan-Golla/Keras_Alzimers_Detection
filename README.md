@@ -1,40 +1,92 @@
+# 🧠 Alzheimer's Detection AI - SWE1002 Project
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
+
+## 🎓 Academic Project Information
+- **Course**: SWE1002 - Software Engineering
+- **Domain**: Healthcare AI - Medical Image Analysis
+- **Technology**: Deep Learning with TensorFlow & Streamlit
+
+## 👥 Development Team
+- 👨‍💻 **Naga Sri Nandhan Golla** - 24MIC7285
+- 👨‍💻 **D N S Abhiram** - 24MIC7324
+- 👨‍💻 **K Punith** - 24MIC7302
+- 👨‍💻 **Siva Narayana Maila** - 24MIC7261
+- 👩‍💻 **Lohitha** - 24MIC7274
+
+## 🚀 Application Overview
+
+This advanced AI application uses deep learning to analyze MRI brain scans and detect different stages of Alzheimer's disease with high accuracy and beautiful visualizations.
+
+### ✨ Key Features
+
+- **🔍 Real-time Analysis**: Upload MRI images for instant AI-powered classification
+- **📊 Advanced Visualizations**: Interactive charts, gauges, and confidence metrics
+- **🎯 Multi-stage Detection**: Identifies 4 different Alzheimer's stages:
+  - **Non Demented** (Healthy brain function)
+  - **Very Mild Demented** (Early stage with minimal decline)
+  - **Mild Demented** (Noticeable cognitive impairment)
+  - **Moderate Demented** (Significant cognitive decline)
+- **📈 Confidence Scoring**: Detailed prediction confidence with visual indicators
+- **🎨 Stunning UI**: Professional interface with gradients and animations
+- **🧠 Clinical Insights**: Medical guidance and next steps recommendations
+
+### 🛠️ Technology Stack
+
+- **Frontend**: Streamlit with custom CSS styling
+- **Backend**: TensorFlow/Keras deep learning model
+- **Visualization**: Plotly for interactive charts and gauges
+- **Image Processing**: PIL for MRI image preprocessing
+- **Data Analysis**: Pandas and NumPy for data manipulation
+
+## 🚀 How to Use
+
+1. **Upload**: Choose an MRI brain scan image (PNG, JPG, JPEG)
+2. **Analyze**: Click the "🔍 Analyze Image" button
+3. **Results**: View detailed predictions with:
+   - Primary prediction with confidence level
+   - Interactive confidence charts
+   - Gauge visualization
+   - Alternative predictions
+   - Clinical insights and recommendations
+
+## 🏥 Model Information
+
+- **Architecture**: Convolutional Neural Network (CNN)
+- **Input Size**: 64x64 pixel MRI images
+- **Training**: Trained on medical MRI dataset
+- **Accuracy**: High-performance classification model
+- **Output**: 4-class classification with confidence scores
+
+## 📋 Installation & Deployment
+
+### Local Development
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd alzheimer-detection-ai
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+streamlit run app.py
+```
+
+### Streamlit Cloud Deployment
+1. Push your code to GitHub
+2. Connect to [Streamlit Cloud](https://streamlit.io/cloud)
+3. Deploy with `app.py` as the main file
+4. Ensure `alzimers_model.h5` is included in the repository
+
+## ⚠️ Important Disclaimer
+
+**This application is developed for educational and research purposes as part of the SWE1002 Software Engineering course. It should NOT be used as a substitute for professional medical diagnosis or treatment. Always consult qualified healthcare professionals for medical advice.**
+
+## 📄 License
+
+This project is developed for academic purposes under the SWE1002 course curriculum.
+
 ---
-title: Alzheimer's Detection AI
-emoji: 🧠
-colorFrom: blue
-colorTo: purple
-sdk: streamlit
-sdk_version: 1.28.0
-app_file: app.py
-pinned: false
-license: mit
----
 
-# Alzheimer's Detection AI Model
-
-This application uses a deep learning model to detect and classify different stages of Alzheimer's disease from MRI brain scans.
-
-## Features
-
-- **Real-time Analysis**: Upload MRI images for instant classification
-- **Multi-stage Detection**: Identifies 4 different stages:
-  - Non Demented (Healthy)
-  - Very Mild Demented
-  - Mild Demented  
-  - Moderate Demented
-- **Confidence Scoring**: Provides prediction confidence levels
-- **User-friendly Interface**: Clean, intuitive Gradio interface
-
-## How to Use
-
-1. Upload an MRI brain scan image
-2. Click "Submit" to analyze
-3. View the predicted stage and confidence score
-
-## Model Information
-
-The model is trained using TensorFlow/Keras and processes 64x64 pixel MRI images to classify Alzheimer's progression stages.
-
-## Disclaimer
-
-This tool is for educational and research purposes only. It should not be used as a substitute for professional medical diagnosis or treatment.
+**🎓 Developed by SWE1002 Students | 🔬 Powered by TensorFlow & Streamlit**
