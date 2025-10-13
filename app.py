@@ -331,29 +331,54 @@ def main():
     with col1:
         st.markdown("### 📤 Upload MRI Image")
         
-        # File uploader with custom styling
+        # File uploader with better error handling for cloud deployment
         uploaded_file = st.file_uploader(
             "Choose an MRI image...",
-            type=['png', 'jpg', 'jpeg'],
-            help="Upload a clear MRI brain scan image for analysis"
+            type=['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG'],
+            help="Upload a clear MRI brain scan image for analysis",
+            key="mri_uploader"
         )
         
         if uploaded_file is not None:
-            # Display uploaded image
-            image = Image.open(uploaded_file)
-            st.image(image, caption="Uploaded MRI Image", use_column_width=True)
-            
-            # Analysis button
-            if st.button("🔍 Analyze Image", use_container_width=True):
-                with st.spinner("Analyzing MRI scan..."):
-                    # Make prediction
-                    predictions, pred_class, confidence = predict_image(image)
+            try:
+                # Validate file size (max 10MB for cloud deployment)
+                if uploaded_file.size > 10 * 1024 * 1024:
+                    st.error("File size too large. Please upload an image smaller than 10MB.")
+                else:
+                    # Display uploaded image with error handling
+                    try:
+                        image = Image.open(uploaded_file)
+                        # Convert to RGB if necessary
+                        if image.mode != 'RGB':
+                            image = image.convert('RGB')
+                        
+                        st.image(image, caption="Uploaded MRI Image", use_column_width=True)
+                        
+                        # Analysis button
+                        if st.button("🔍 Analyze Image", use_container_width=True, key="analyze_btn"):
+                            with st.spinner("Analyzing MRI scan..."):
+                                try:
+                                    # Make prediction with error handling
+                                    predictions, pred_class, confidence = predict_image(image)
+                                    
+                                    # Store results in session state
+                                    st.session_state.predictions = predictions
+                                    st.session_state.pred_class = pred_class
+                                    st.session_state.confidence = confidence
+                                    st.session_state.analyzed = True
+                                    st.success("Analysis completed successfully!")
+                                    
+                                except Exception as e:
+                                    st.error(f"Analysis failed: {str(e)}")
+                                    st.info("Please try uploading a different image or refresh the page.")
                     
-                    # Store results in session state
-                    st.session_state.predictions = predictions
-                    st.session_state.pred_class = pred_class
-                    st.session_state.confidence = confidence
-                    st.session_state.analyzed = True
+                    except Exception as e:
+                        st.error(f"Error loading image: {str(e)}")
+                        st.info("Please ensure the file is a valid image format (PNG, JPG, JPEG).")
+            
+            except Exception as e:
+                st.error(f"File upload error: {str(e)}")
+                st.info("Please try refreshing the page and uploading again.")
     
     with col2:
         st.markdown("### 📊 Analysis Results")
