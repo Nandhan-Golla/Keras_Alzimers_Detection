@@ -74,7 +74,7 @@ description_md = f"""
 footer_md = """
 ---
 <div style="text-align:center;font-size:1.1em;color:#888;">
-   Powered by <b>TensorFlow</b> & <b>Gradio</b>
+   Powered by <b>Tensorflow</b> & <b>ONNX</b>
 </div>
 """
 
