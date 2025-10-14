@@ -283,7 +283,8 @@ def main():
             {"name": "D N S Abhiram", "id": "24MIC7324", "icon": "👨‍💻"},
             {"name": "K Punith", "id": "24MIC7302", "icon": "👨‍💻"},
             {"name": "Siva Narayana Maila", "id": "24MIC7261", "icon": "👨‍💻"},
-            {"name": "Lohitha", "id": "24MIC7274", "icon": "👩‍💻"}
+            {"name": "Lohitha", "id": "24MIC7274", "icon": "👩‍💻"},
+            {"name" : "Ayesha humera", "id": "24MIC7281", "icon": "👩‍💻"}
         ]
         
         for dev in developers:
