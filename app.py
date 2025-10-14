@@ -528,6 +528,9 @@ def main():
             <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
                 👩‍💻 Lohitha - 24MIC7274
             </div>
+             <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
+                👩‍💻 Ayesha humera - 24MIC7281
+            </div>
         </div>
         <p style="color: rgba(255,255,255,0.9); margin: 0;">🔬 Powered by <strong>TensorFlow</strong> & <strong>Streamlit</strong></p>
         <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0.5rem 0;">Built for educational and research purposes • Always consult healthcare professionals</p>
