@@ -509,34 +509,7 @@ def main():
     
     # Enhanced Footer
     st.markdown("---")
-    st.markdown("""
-    <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin: 1rem 0;">
-        <h3 style="color: white; margin-bottom: 1rem;">🎓 SWE1002 - Alzheimer's Detection AI Project</h3>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
-            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
-                👨‍💻 CHAMARTI KRISHNA MURTHY – 24BCE7154
-            </div>
-            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
-                👨‍💻 KOLIPAKULA LOKESH – 24BCE8541
-            </div>
-            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
-                👨‍💻 GANGULA THEERDHA SIVA NAGENDRA – 24BCE8574
-            </div>
-            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
-                👨‍💻 GEMBALI SRINIVAS RAO – 24BCE8492
-
-            </div>
-            <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
-                👩‍💻 RUDRA PRATAP SINHA – 24BCE7450
-            </div>
-             <div style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; color: white;">
-               
-            </div>
-        </div>
-        <p style="color: rgba(255,255,255,0.9); margin: 0;">🔬 Powered by <strong>TensorFlow</strong> & <strong>Streamlit</strong></p>
-        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0.5rem 0;">Built for educational and research purposes • Always consult healthcare professionals</p>
-    </div>
-    """, unsafe_allow_html=True)
+   
 
 if __name__ == "__main__":
     main()
