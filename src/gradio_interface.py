@@ -46,7 +46,7 @@ def predict_image(img):
 description_md = f"""
 <div style="text-align:center;">
     <h1 style="margin-bottom:0.2em;font-size:2.2em;font-weight:800;letter-spacing:1px;background:linear-gradient(90deg,#1E90FF,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-        Alzheimer's Detection SWE1002 Project
+        Alzheimer's Detection CSE1005 Project
     </h1>
     <div style="font-size:1.1em;margin-bottom:0.7em;">
         <b>High-end, accurate deep learning model for Alzheimer's stage detection from MRI scans.</b>

@@ -10,7 +10,7 @@ import io
 
 # Page configuration
 st.set_page_config(
-    page_title="Alzheimer's Detection AI - SWE1002 Project",
+    page_title="Alzheimer's Detection AI - CSE1005 Project",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -254,11 +254,11 @@ def create_gauge_chart(confidence, pred_class, color):
 
 # Main App Layout
 def main():
-    # Header with SWE1002 Project Badge
+    # Header with CSE1005 Project Badge
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
         <div style="background: linear-gradient(45deg, #FF6B6B, #4ECDC4); padding: 0.5rem 1.5rem; border-radius: 25px; display: inline-block; margin-bottom: 1rem;">
-            <h3 style="color: white; margin: 0; font-weight: bold;">🎓 SWE1002 Project</h3>
+            <h3 style="color: white; margin: 0; font-weight: bold;">🎓 CSE1005 Project</h3>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -268,10 +268,10 @@ def main():
     
     # Sidebar
     with st.sidebar:
-        # SWE1002 Project Info
+        # CSE1005 Project Info
         st.markdown("""
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1rem; border-radius: 15px; margin-bottom: 1rem;">
-            <h3 style="color: white; text-align: center; margin: 0;">🎓 SWE1002 Project</h3>
+            <h3 style="color: white; text-align: center; margin: 0;">🎓 CSE1005 Project</h3>
             <p style="color: white; text-align: center; margin: 0.5rem 0; font-size: 0.9rem;">Software Engineering Course Project</p>
         </div>
         """, unsafe_allow_html=True)
@@ -484,7 +484,7 @@ def main():
         st.markdown("""
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 1.5rem; border-radius: 15px; text-align: center;">
             <h4 style="color: white; margin: 0;">📚 Course</h4>
-            <p style="color: white; font-size: 1.2rem; font-weight: bold; margin: 0.5rem 0;">SWE1002</p>
+            <p style="color: white; font-size: 1.2rem; font-weight: bold; margin: 0.5rem 0;">CSE1005</p>
             <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0;">Software Engineering</p>
         </div>
         """, unsafe_allow_html=True)

@@ -1,9 +1,9 @@
-# 🧠 Alzheimer's Detection AI - SWE1002 Project
+# 🧠 Alzheimer's Detection AI - CSE1005 Project
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
 
 ## 🎓 Academic Project Information
-- **Course**: SWE1002 - Software Engineering
+- **Course**: CSE1005 - Software Engineering
 - **Domain**: Healthcare AI - Medical Image Analysis
 - **Technology**: Deep Learning with TensorFlow & Streamlit
 
@@ -83,12 +83,12 @@ streamlit run app.py
 
 ## ⚠️ Important Disclaimer
 
-**This application is developed for educational and research purposes as part of the SWE1002 Software Engineering course. It should NOT be used as a substitute for professional medical diagnosis or treatment. Always consult qualified healthcare professionals for medical advice.**
+**This application is developed for educational and research purposes as part of the CSE1005 Software Engineering course. It should NOT be used as a substitute for professional medical diagnosis or treatment. Always consult qualified healthcare professionals for medical advice.**
 
 ## 📄 License
 
-This project is developed for academic purposes under the SWE1002 course curriculum.
+This project is developed for academic purposes under the CSE1005 course curriculum.
 
 ---
 
-**🎓 Developed by SWE1002 Students | 🔬 Powered by TensorFlow & Streamlit**
+**🎓 Developed by CSE1005 Students | 🔬 Powered by TensorFlow & Streamlit**
