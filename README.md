@@ -8,11 +8,13 @@
 - **Technology**: Deep Learning with TensorFlow & Streamlit
 
 ## 👥 Development Team
-- 👨‍💻 **Naga Sri Nandhan Golla** - 24MIC7285
-- 👨‍💻 **D N S Abhiram** - 24MIC7324
-- 👨‍💻 **K Punith** - 24MIC7302
-- 👨‍💻 **Siva Narayana Maila** - 24MIC7261
-- 👩‍💻 **Lohitha** - 24MIC7274
+- 👨‍💻 **CHAMARTI KRISHNA MURTHY** - 24BCE7154
+- 👨‍💻 **KOLIPAKULA LOKESH** - 24BCE8541
+- 👨‍💻 **GANGULA THEERDHA SIVA NAGENDRA** - 24BCE8574
+- 👨‍💻 **GEMBALI SRINIVAS RAO** - 24BCE8492
+- 👨‍💻 **RUDRA PRATAP SINHA** - 24BCE7450
+
+
 
 ## 🚀 Application Overview
 

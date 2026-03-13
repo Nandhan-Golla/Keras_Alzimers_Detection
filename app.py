@@ -279,12 +279,12 @@ def main():
         # Meet Developers Section
         st.markdown("### 👥 Meet the Developers")
         developers = [
-            {"name": "Naga Sri Nandhan Golla", "id": "24MIC7285", "icon": "👨‍💻"},
-            {"name": "D N S Abhiram", "id": "24MIC7324", "icon": "👨‍💻"},
-            {"name": "K Punith", "id": "24MIC7302", "icon": "👨‍💻"},
-            {"name": "Siva Narayana Maila", "id": "24MIC7261", "icon": "👨‍💻"},
-            {"name": "Lohitha", "id": "24MIC7274", "icon": "👩‍💻"},
-            {"name" : "Ayesha humera", "id": "24MIC7281", "icon": "👩‍💻"}
+            {"name": "CHAMARTI KRISHNA MURTHY", "id": "24BCE7154", "icon": "👨‍💻"},
+            {"name": "KOLIPAKULA LOKESH ", "id": "24BCE8541", "icon": "👨‍💻"},
+            {"name": "GANGULA THEERDHA SIVA NAGENDRA", "id": "24BCE8574", "icon": "👨‍💻"},
+            {"name": "GEMBALI SRINIVAS RAO", "id": "24BCE8492", "icon": "👨‍💻"},
+            {"name": "RUDRA PRATAP SINHA ", "id": "24BCE7450", "icon": "👩‍💻"}
+            
         ]
         
         for dev in developers:
