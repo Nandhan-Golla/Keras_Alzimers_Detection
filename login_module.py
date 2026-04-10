@@ -31,7 +31,6 @@ def login_form():
         if username in VALID_CREDENTIALS and VALID_CREDENTIALS[username] == password:
             st.session_state.logged_in = True
             st.session_state.login_error = None
-            st.experimental_rerun()
         else:
             st.session_state.login_error = "Invalid username or password."
 
@@ -43,4 +42,3 @@ def login_form():
 
 def logout():
     st.session_state.logged_in = False
-    st.experimental_rerun()
