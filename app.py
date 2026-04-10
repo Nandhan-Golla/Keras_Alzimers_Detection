@@ -27,8 +27,6 @@ if 'pred_class' not in st.session_state:
 if 'confidence' not in st.session_state:
     st.session_state.confidence = None
 
-login_module.init_login_state()
-
 # Custom CSS for beautiful styling
 st.markdown("""
 <style>
@@ -155,8 +153,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Load model with caching
-@st.cache_resource
+# Load model
 def load_model():
     return tf.keras.models.load_model("alzimers_model.h5")
 
@@ -257,6 +254,7 @@ def create_gauge_chart(confidence, pred_class, color):
 
 # Main App Layout
 def main():
+    login_module.init_login_state()
     if not login_module.is_logged_in():
         login_module.login_form()
         return
