@@ -1,4 +1,5 @@
 import streamlit as st
+import login_module
 import tensorflow as tf
 import numpy as np
 import pandas as pd
@@ -25,6 +26,8 @@ if 'pred_class' not in st.session_state:
     st.session_state.pred_class = None
 if 'confidence' not in st.session_state:
     st.session_state.confidence = None
+
+login_module.init_login_state()
 
 # Custom CSS for beautiful styling
 st.markdown("""
@@ -254,6 +257,17 @@ def create_gauge_chart(confidence, pred_class, color):
 
 # Main App Layout
 def main():
+    if not login_module.is_logged_in():
+        login_module.login_form()
+        return
+
+    # Sidebar logout
+    with st.sidebar:
+        st.write("### User")
+        st.success("Logged in as user")
+        if st.button("Logout"):
+            login_module.logout()
+
     # Header with CSE1005 Project Badge
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
